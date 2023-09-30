@@ -1,4 +1,4 @@
-SUMMARY="A limit-removing enhanced-resolution Doom source port based on Chocolate Doom."
+SUMMARY="A limit-removing enhanced-resolution Doom source port based on Chocolate Doom"
 DESCRIPTION="Crispy Doom is a friendly fork of Chocolate Doom that provides a higher display \
 resolution, removes the static limits of the Doom engine and offers further optional visual, \
 tactical and physical enhancements while remaining entirely config file, savegame, netplay \
