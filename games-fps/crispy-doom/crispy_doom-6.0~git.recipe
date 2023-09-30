@@ -32,12 +32,14 @@ REQUIRES="
 	haiku$secondaryArchSuffix
 	lib:libsdl2_2.0$secondaryArchSuffix
 	lib:libsdl2_net_2.0$secondaryArchSuffix
+	lib:libsdl2_mixer_2.0$secondaryArchSuffix
 	"
 
 BUILD_REQUIRES="
 	haiku${secondaryArchSuffix}_devel
 	devel:libsdl2_2.0$secondaryArchSuffix
 	devel:libsdl2_net_2.0$secondaryArchSuffix
+	devel:libsdl2_mixer_2.0$secondaryArchSuffix
 	"
 BUILD_PREREQUIRES="
 	cmd:gcc$secondaryArchSuffix
