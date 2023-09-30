@@ -1,22 +1,19 @@
 SUMMARY="todo"
-DESCRIPTION="todo"
+DESCRIPTION="Crispy Doom is a friendly fork of Chocolate Doom that provides a higher display \
+resolution, removes the static limits of the Doom engine and offers further optional visual, \
+tactical and physical enhancements while remaining entirely config file, savegame, netplay \
+and demo compatible with the original."
 HOMEPAGE="https://github.com/fabiangreffrath/crispy-doom"
 COPYRIGHT="2014-2019 Fabian Greffrath"
 LICENSE="GNU GPL v2"
 REVISION="1"
-SOURCE_URI="https://www.chocolate-doom.org/downloads/$portVersion/chocolate-doom-$portVersion.tar.gz"
-CHECKSUM_SHA256="d435d6177423491d60be706da9f07d3ab4fabf3e077ec2a3fc216e394fcfc8c7"
-SOURCE_DIR="chocolate-doom-$portVersion"
+srcGitRev="eb6b127d9ce10949f00bcad8c5953b7092c92d12"
+SOURCE_URI="https://github.com/fabiangreffrath/crispy-doom/archive/$srcGitRev.tar.gz"
+CHECKSUM_SHA256="8020aa18b12c2deaddb266a6e1b69d99951b21dc98f32f887e3709b63ccd0c68"
+SOURCE_DIR="crispy-doom-$srcGitRev"
 
 ARCHITECTURES="all !x86_gcc2"
-
-commandSuffix=$secondaryArchSuffix
-commandBinDir=$binDir
-if [ $targetArchitecture == x86_gcc2 ]; then
-	SECONDARY_ARCHITECTURES="x86"
-	commandSuffix=
-	commandBinDir=$prefix/bin
-fi
+SECONDARY_ARCHITECTURES="x86"
 
 PROVIDES="
 	crispy_doom$secondaryArchSuffix = $portVersion
@@ -27,76 +24,46 @@ PROVIDES="
 	cmd:crispy_hexen = $portVersion
 	cmd:crispy_hexen_setup = $portVersion
 	cmd:crispy_server = $portVersion
+	cmd:crispy_setup = $portVersion
 	cmd:crispy_strife = $portVersion
 	cmd:crispy_strife_setup = $portVersion
 	"
 REQUIRES="
 	haiku$secondaryArchSuffix
-	lib:libpng16$secondaryArchSuffix
-	lib:libsamplerate$secondaryArchSuffix
 	lib:libsdl2_2.0$secondaryArchSuffix
-	lib:libsdl2_mixer_2.0$secondaryArchSuffix
 	lib:libsdl2_net_2.0$secondaryArchSuffix
-	lib:libz$secondaryArchSuffix
 	"
 
 BUILD_REQUIRES="
 	haiku${secondaryArchSuffix}_devel
-	devel:libpng16$secondaryArchSuffix
-	devel:libsamplerate$secondaryArchSuffix
 	devel:libsdl2_2.0$secondaryArchSuffix
-	devel:libsdl2_mixer_2.0$secondaryArchSuffix
 	devel:libsdl2_net_2.0$secondaryArchSuffix
-	devel:libz$secondaryArchSuffix
 	"
 BUILD_PREREQUIRES="
 	cmd:gcc$secondaryArchSuffix
-	cmd:install
 	cmd:ld$secondaryArchSuffix
 	cmd:make
-	cmd:pkg_config$secondaryArchSuffix
 	"
 
 defineDebugInfoPackage crispy_doom$secondaryArchSuffix \
-	$commandBinDir/crispy-doom \
-	$commandBinDir/crispy-doom-setup \
-	$commandBinDir/crispy-hexen \
-	$commandBinDir/crispy-hexen-setup \
-	$commandBinDir/crispy-heretic \
-	$commandBinDir/crispy-heretic-setup \
-	$commandBinDir/crispy-server \
-	$commandBinDir/crispy-strife-setup \
-	$commandBinDir/crispy-strife
-
+	$binDir/crispy-doom \
+	$binDir/crispy-doom-setup \
+	$binDir/crispy-hexen \
+	$binDir/crispy-hexen-setup \
+	$binDir/crispy-heretic \
+	$binDir/crispy-heretic-setup \
+	$binDir/crispy-server \
+	$binDir/crispy-strife-setup \
+	$binDir/crispy-strife
 
 BUILD()
 {
-	# Avoid "multiple definition" linker errors under "src/hexen/"
-	export LDFLAGS="-z muldefs"
-
-	# "__dummy__" is just a placeholder, because the makefiles use "$docdir/../crispy_xxx"
-	docdir=$prefix/documentation/packages/crispy_doom/__dummy__
-
-	runConfigure --omit-dirs "binDir docDir" ./configure \
-		--bindir=$commandBinDir \
-		--docdir=$docdir
-		# Option available only on versions > 3.0.1, and with cmd:python3 available
-		# --with-bashcompletiondir=$dataDir/bash-completion/completions
-
+	autoreconf -fiv
+	runConfigure ./configure
 	make $jobArgs
 }
 
 INSTALL()
 {
-	# Other install targets are: install-man install-data. Recheck when updating to > 3.0.1
 	make install install-exec
-
-	# For now, let's manually install unprocessed man pages (better than nothing):
-	mkdir -p $manDir/man5 $manDir/man6
-	cp man/*.5 $manDir/man5
-	cp man/*.6 $manDir/man6
-
-	# clean-up
-	rm -rf $prefix/share
-	rm -rf $prefix/documentation/packages/crispy_doom/__dummy__
 }
