@@ -43,8 +43,8 @@ BUILD_PREREQUIRES="
 	cmd:gcc$secondaryArchSuffix
 	cmd:ld$secondaryArchSuffix
 	cmd:autoreconf$secondaryArchSuffix
+	cmd:automake$secondaryArchSuffix
 	cmd:aclocal$secondaryArchSuffix
-	cmd:libtoolize$secondaryArchSuffix
 	cmd:make$secondaryArchSuffix
 	"
 
