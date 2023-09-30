@@ -62,7 +62,7 @@ defineDebugInfoPackage crispy_doom$secondaryArchSuffix \
 BUILD()
 {
 	autoreconf -fiv
-	runConfigure ./configure
+	runConfigure --bindir="$binDir" ./configure
 	make $jobArgs
 }
 
