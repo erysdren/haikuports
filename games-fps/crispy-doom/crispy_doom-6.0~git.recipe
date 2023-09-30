@@ -42,12 +42,10 @@ BUILD_REQUIRES="
 BUILD_PREREQUIRES="
 	cmd:gcc$secondaryArchSuffix
 	cmd:ld$secondaryArchSuffix
-	cmd:autoconf$secondaryArchSuffix
-	cmd:automake$secondaryArchSuffix
 	cmd:autoreconf$secondaryArchSuffix
 	cmd:aclocal$secondaryArchSuffix
-	cmd:libtoolize$secondaryArchSuffix
 	cmd:make$secondaryArchSuffix
+	cmd:pkg_config$secondaryArchSuffix
 	"
 
 BUILD()
