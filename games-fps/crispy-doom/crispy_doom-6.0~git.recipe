@@ -42,7 +42,8 @@ BUILD_REQUIRES="
 BUILD_PREREQUIRES="
 	cmd:gcc$secondaryArchSuffix
 	cmd:ld$secondaryArchSuffix
-	cmd:make
+	cmd:autoreconf$secondaryArchSuffix
+	cmd:make$secondaryArchSuffix
 	"
 
 defineDebugInfoPackage crispy_doom$secondaryArchSuffix \
