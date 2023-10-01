@@ -1,0 +1,29 @@
+From d864ffee5491749d0f5ec5f6df875663a5b6b015 Mon Sep 17 00:00:00 2001
+From: Jaycie Ewald <jaycie.ewald@outlook.com>
+Date: Sun, 1 Oct 2023 01:34:59 -0500
+Subject: [PATCH] Update Makefile for Haiku compilation
+
+---
+ engine/Makefile | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/engine/Makefile b/engine/Makefile
+index 182e27abd..05032c3e4 100644
+--- a/engine/Makefile
++++ b/engine/Makefile
+@@ -2359,7 +2359,11 @@ $(RELEASE_DIR)/iqmtool$(BITS)$(EXEPOSTFIX): $(IQM_OBJECTS)
+ ifeq (win,$(findstring win,$(FTE_TARGET)))
+ 	$(CC) -o $@ $(IQM_OBJECTS) -Icommon -Iclient -Iqclib -Igl -Iserver $(ALL_CFLAGS) $(CLIENTLIBFLAGS) -DIQMTOOL $(BASELDFLAGS) $(CLIENTLDDEPS) --static -static-libgcc -static-libstdc++ -lstdc++ -lm -Os
+ else
+-	$(CC) -o $@ $(IQM_OBJECTS) -Icommon -Iclient -Iqclib -Igl -Iserver $(ALL_CFLAGS) -DIQMTOOL -lstdc++ -lm -ldl -Os
++	ifeq ($(COMPILE_SYS),Haiku)
++		$(CC) -o $@ $(IQM_OBJECTS) -Icommon -Iclient -Iqclib -Igl -Iserver $(ALL_CFLAGS) -DIQMTOOL -lstdc++ -Os
++	else
++		$(CC) -o $@ $(IQM_OBJECTS) -Icommon -Iclient -Iqclib -Igl -Iserver $(ALL_CFLAGS) -DIQMTOOL -lstdc++ -lm -ldl -Os
++	endif
+ endif
+ iqm-rel: reldir $(RELEASE_DIR)/iqmtool$(BITS)$(EXEPOSTFIX)
+ iqmtool-rel: reldir $(RELEASE_DIR)/iqmtool$(BITS)$(EXEPOSTFIX)
+-- 
+2.42.0
+

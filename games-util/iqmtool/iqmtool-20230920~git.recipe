@@ -9,6 +9,7 @@ srcGitRev="eb6b127d9ce10949f00bcad8c5953b7092c92d12"
 SOURCE_URI="https://github.com/fte-team/fteqw/archive/$srcGitRev.tar.gz"
 CHECKSUM_SHA256="8d19bf1ca4816d0fb35fda7401ef28b7ca02391ca14ca10843f22d64845d1614"
 SOURCE_DIR="fteqw-$srcGitRev"
+PATCHES="iqmtool-$portVersion.patchset"
 
 ARCHITECTURES="all !x86_gcc2"
 SECONDARY_ARCHITECTURES="x86"
