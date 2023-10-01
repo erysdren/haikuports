@@ -20,11 +20,13 @@ PROVIDES="
 REQUIRES="
 	haiku$secondaryArchSuffix
 	lib:libz$secondaryArchSuffix
+	lib:libpng$secondaryArchSuffix
 	"
 
 BUILD_REQUIRES="
 	haiku${secondaryArchSuffix}_devel
 	devel:libz$secondaryArchSuffix
+	devel:libpng$secondaryArchSuffix
 	"
 BUILD_PREREQUIRES="
 	cmd:gcc$secondaryArchSuffix
