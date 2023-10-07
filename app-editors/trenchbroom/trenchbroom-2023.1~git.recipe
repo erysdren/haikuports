@@ -10,7 +10,7 @@ REVISION="1"
 srcGitRev="5ffdbbc97dc478532637be7e1457ba7b08a2803f"
 SOURCE_URI="https://github.com/TrenchBroom/TrenchBroom/archive/$srcGitRev.tar.gz"
 CHECKSUM_SHA256="dc7f4a4e49c408bd0ff80926f90dca2c8359bf51bf5fd9bb972c0f8390772b55"
-SOURCE_DIR="TrenchBroom-$portVersion"
+SOURCE_DIR="TrenchBroom-$srcGitRev"
 PATCHES="trenchbroom-$portVersion.patchset"
 ADDITIONAL_FILES="FindFreeImage.cmake"
 
