@@ -28,7 +28,6 @@ REQUIRES="
 	lib:libfreeimage$secondaryArchSuffix
 	lib:libglew$secondaryArchSuffix
 	lib:libtinyxml$secondaryArchSuffix
-	lib:libminiz$secondaryArchSuffix
 	lib:libassimp$secondaryArchSuffix
 	lib:libcatch2$secondaryArchSuffix
 	"
@@ -40,7 +39,6 @@ BUILD_REQUIRES="
 	devel:libfreeimage$secondaryArchSuffix
 	devel:libglew$secondaryArchSuffix
 	devel:libtinyxml$secondaryArchSuffix
-	devel:libminiz$secondaryArchSuffix
 	devel:libassimp$secondaryArchSuffix
 	devel:libcatch2$secondaryArchSuffix
 	"
