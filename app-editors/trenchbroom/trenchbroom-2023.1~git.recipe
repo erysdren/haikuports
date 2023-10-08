@@ -47,6 +47,7 @@ BUILD_PREREQUIRES="
 	cmd:ld$secondaryArchSuffix
 	cmd:make
 	cmd:cmake
+	cmd:git
 	"
 
 BUILD()
