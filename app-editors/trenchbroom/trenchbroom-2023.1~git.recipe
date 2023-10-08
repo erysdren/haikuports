@@ -56,7 +56,7 @@ BUILD()
 
 	# build
 	mkdir -p $sourceDir/cmake-build-haiku
-	cd -a $sourceDir/cmake-build-haiku
+	cd $sourceDir/cmake-build-haiku
 	cmake ..
 	make
 }
