@@ -1,7 +1,7 @@
 From b09e8bfef33a1a7de9d2b937432c78d6eacfadd9 Mon Sep 17 00:00:00 2001
 From: Jaycie Ewald <jaycie.ewald@outlook.com>
 Date: Sat, 7 Oct 2023 11:14:40 -0500
-Subject: [PATCH] remove pandoc and vcpkg
+Subject: [PATCH 1/2] remove pandoc and vcpkg
 
 ---
  CMakeLists.txt     | 14 --------------
@@ -49,6 +49,32 @@ index 2731308d2..f777f7095 100644
 -
  set(APP_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
  set(APP_RESOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/resources")
+ 
+-- 
+2.42.0
+
+
+From 26063fcba06066da031fb4e04428c82c8aef7cd8 Mon Sep 17 00:00:00 2001
+From: Jaycie Ewald <jaycie.ewald@outlook.com>
+Date: Sun, 8 Oct 2023 13:32:58 -0500
+Subject: [PATCH 2/2] add module path thing
+
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 443ea2e11..3dd5d5078 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,6 +23,8 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN TRUE)
+ # Enable the source_group command for creating IDE folders
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
++set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
++
+ # Set TrenchBroom item as default single startup project (NOTE: CMake 3.6 and newer)
+ set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT TrenchBroom)
  
 -- 
 2.42.0
