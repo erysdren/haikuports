@@ -57,7 +57,7 @@ BUILD()
 	# build
 	mkdir -p $sourceDir/cmake-build-haiku
 	cd $sourceDir/cmake-build-haiku
-	cmake ..
+	cmake -DCMAKE_BUILD_TYPE=Release ..
 	make
 }
 
