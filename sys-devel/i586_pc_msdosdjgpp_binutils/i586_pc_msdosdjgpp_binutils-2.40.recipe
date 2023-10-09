@@ -102,7 +102,7 @@ BUILD()
 		"$sourceDir/configure" \
 		--exec-prefix=$installDir \
 		--includedir=$includeDir/binutils \
-		--docdir=$docDir --with-sysroot=$installDir \
+		--docdir=$docDir \
 		--disable-shared --program-prefix=${targetArch}- \
 		--disable-nls --disable-werror --bindir=$prefix/bin --target=${targetArch}
 
