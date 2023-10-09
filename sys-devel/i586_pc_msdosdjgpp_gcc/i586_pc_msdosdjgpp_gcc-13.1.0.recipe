@@ -58,6 +58,8 @@ BUILD_PREREQUIRES="
 	cmd:strip
 	cmd:tar
 	cmd:xargs
+	cmd:ar
+	cmd:ranlib
 	"
 
 sourceDir=$(pwd)
