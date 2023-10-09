@@ -120,7 +120,7 @@ INSTALL()
 
 	mkdir -p $includeDir
 	DJDIR="$installDir/${targetArch}" \
-		make install-gcc install-target-libgcc
+		make $jobArgs install-gcc install-target-libgcc
 
 	### djcrx #################################################
 
@@ -128,14 +128,6 @@ INSTALL()
 	mkdir -p $installDir/${targetArch}/lib
 	cp -rp $sourceDir2/include $installDir/${targetArch}/sys-include
 	cp -rp $sourceDir2/lib/* $installDir/${targetArch}/lib/
-
-	### symlinks ##############################################
-
-	# make all tools available via default paths
-	mkdir -p $prefix/bin
-	for f in c++ cc cpp g++ gcc gcov; do
-		symlinkRelative -sfn $installDir/bin/$targetArch-$f $prefix/bin
-	done
 
 	### cleanup ###############################################
 
