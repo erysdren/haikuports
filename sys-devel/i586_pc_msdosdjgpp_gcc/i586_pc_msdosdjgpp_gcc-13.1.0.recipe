@@ -89,7 +89,7 @@ BUILD()
 		--prefix=$installDir --libexecdir=$installDir/lib --mandir=$manDir \
 		--docdir=$docDir --disable-nls --with-gnu-ld \
 		--enable-languages=c,c++ --enable-lto \
-		--disable-shared --enable-libstdcxx-filesystem-ts \
+		--enable-multilib --disable-shared --enable-libstdcxx-filesystem-ts \
 		--enable-libquadmath-support --disable-plugin \
 		--enable-version-specific-runtime-libs \
 		--target=$targetArch --program-prefix=${targetArch}-
