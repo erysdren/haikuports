@@ -80,7 +80,7 @@ BUILD()
 
 	export DJDIR="$installDir/${targetArch}"
 
-	mkdir $includeDir
+	mkdir -p $includeDir
 	cd $sourceDir
 
 	DJDIR="$installDir/${targetArch}" \
@@ -107,7 +107,7 @@ INSTALL()
 
 	export DJDIR="$installDir/${targetArch}"
 
-	mkdir $includeDir
+	mkdir -p $includeDir
 	DJDIR="$installDir/${targetArch}" make install
 
 	### djcrx #################################################
