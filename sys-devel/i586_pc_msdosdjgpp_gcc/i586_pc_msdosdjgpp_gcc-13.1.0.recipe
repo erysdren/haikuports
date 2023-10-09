@@ -66,6 +66,7 @@ BUILD_PREREQUIRES="
 sourceDir=$(pwd)
 relativeInstallDir="develop/tools/${targetArch}"
 installDir="$prefix/$relativeInstallDir"
+objectsDir=$(pwd)/../${portVersionedName}-obj
 
 BUILD()
 {
@@ -75,17 +76,20 @@ BUILD()
 	(cd $sourceDir/gcc; touch c-parse.c c-parse.h cexp.c cp/parse.c \
 		cp/parse.h c-gperf.h)
 
+	rm -rf $objectsDir
+	mkdir -p $objectsDir
+	cd $objectsDir
+
 	export DJDIR="$installDir/${targetArch}"
 
 	mkdir -p $includeDir
-	cd $sourceDir
 
 	DJDIR="$installDir/${targetArch}" \
 	CXXFLAGS="-O2 -fPIC" \
 	CFLAGS="-O2 -U_FORTIFY_SOURCE -fPIC" \
 	LDFLAGS="-lnetwork" \
 		runConfigure \
-		./configure \
+		$sourceDir/configure \
 		--build=$effectiveTargetMachineTriple \
 		--prefix=$installDir --libexecdir=$installDir/lib --mandir=$manDir \
 		--docdir=$docDir --disable-nls --with-gnu-ld \
