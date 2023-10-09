@@ -84,6 +84,8 @@ BUILD()
 
 	mkdir -p $includeDir
 
+	### configure #############################################
+
 	DJDIR="$installDir/${targetArch}" \
 	CXXFLAGS="-O2 -fPIC" \
 	CFLAGS="-O2 -U_FORTIFY_SOURCE -fPIC" \
@@ -99,7 +101,8 @@ BUILD()
 		--enable-version-specific-runtime-libs \
 		--target=$targetArch --program-prefix=${targetArch}-
 
-	echo "configure done, start build"
+	### make ##################################################
+
 	make $jobArgs all-gcc all-target-libgcc
 }
 
@@ -110,16 +113,15 @@ INSTALL()
 	export DJDIR="$installDir/${targetArch}"
 
 	mkdir -p $includeDir
-	DJDIR="$installDir/${targetArch}" make install-gcc install-target-libgcc
+	DJDIR="$installDir/${targetArch}" \
+		make install-gcc install-target-libgcc
 
 	### djcrx #################################################
 
 	cp -rp $sourceDir2/include $installDir/${targetArch}/sys-include
 	cp -rp $sourceDir2/lib/* $installDir/${targetArch}/lib/
 
-	### Symlinks ##############################################
-
-	echo "Creating required symlinks"
+	### symlinks ##############################################
 
 	# make all tools available via default paths
 	mkdir -p $prefix/bin
@@ -127,9 +129,8 @@ INSTALL()
 		symlinkRelative -sfn $installDir/bin/$targetArch-$f $prefix/bin
 	done
 
-	### Cleanup ###############################################
+	### cleanup ###############################################
 
-	echo "Cleanup"
 	rm -rf $installDir/info
 	rm -rf $installDir/share
 }

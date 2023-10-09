@@ -98,6 +98,8 @@ BUILD()
 	mkdir -p $objectsDir
 	cd $objectsDir
 
+	### configure #############################################
+
 	CFLAGS=-O2 CXXFLAGS=-O2 runConfigure --omit-dirs binDir \
 		"$sourceDir/configure" \
 		--exec-prefix=$installDir \
@@ -106,11 +108,11 @@ BUILD()
 		--disable-shared --program-prefix=${targetArch}- \
 		--disable-nls --disable-werror --bindir=$prefix/bin --target=${targetArch}
 
+	### make ##################################################
+
 	make $jobArgs LEXLIB=
 
-	#
-	# djcrx
-	#
+	### djcrx #################################################
 
 	cd $sourceDir2/src/stub
 	gcc -O2 stubify.c -o stubify
@@ -133,15 +135,11 @@ INSTALL()
 	cp -p $sourceDir2/src/stub/stubify $prefix/bin/${targetArch}-stubify
 	cp -p $sourceDir2/src/stub/stubedit $prefix/bin/${targetArch}-stubedit
 
-	### Strip #################################################
-
-	echo "Strip debug info"
+	### strip #################################################
 
 	strip --strip-debug $prefix/bin/*
 
-	### Symlinks ##############################################
-
-	echo "Creating required symlinks"
+	### symlinks ##############################################
 
 	# There are copies of a subset of the commands below installDir. We
 	# overwrite those with symlinks to the ones in binDir.
@@ -149,13 +147,14 @@ INSTALL()
 		symlinkRelative -sfn $prefix/bin/${targetArch}-$(basename $file) $file
 	done
 
-	### Cleanup #################################################
-
-	echo "Cleanup"
+	### cleanup #################################################
 
 	# delete man pages for commands that we aren't including
 	cd $manDir
 	for cmd in dlltool nlmconv windmc windres; do
 		rm -f man1/$targetArch-$cmd.1
 	done
+
+	# not sure why this is even getting generated
+	rm -f $installDir/lib/bfd-plugins/libdep.a
 }
