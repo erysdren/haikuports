@@ -80,7 +80,9 @@ BUILD()
 
 	export DJDIR="$installDir/${targetArch}"
 
+	mkdir $includeDir
 	cd $sourceDir
+
 	DJDIR="$installDir/${targetArch}" \
 	CXXFLAGS="-O2 -fPIC" \
 	CFLAGS="-O2 -U_FORTIFY_SOURCE -fPIC" \
@@ -105,6 +107,7 @@ INSTALL()
 
 	export DJDIR="$installDir/${targetArch}"
 
+	mkdir $includeDir
 	DJDIR="$installDir/${targetArch}" make install
 
 	### djcrx #################################################
