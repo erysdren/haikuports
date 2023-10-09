@@ -126,7 +126,7 @@ INSTALL()
 
 	mkdir -p $installDir/${targetArch}/sys-include
 	mkdir -p $installDir/${targetArch}/lib
-	cp -rp $sourceDir2/include $installDir/${targetArch}/sys-include
+	cp -rp $sourceDir2/include/* $installDir/${targetArch}/sys-include/
 	cp -rp $sourceDir2/lib/* $installDir/${targetArch}/lib/
 
 	### cleanup ###############################################
