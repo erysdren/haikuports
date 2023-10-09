@@ -80,9 +80,12 @@ BUILD()
 
 	export DJDIR="$installDir/${targetArch}"
 
+	cd $sourceDir
 	DJDIR="$installDir/${targetArch}" \
 	CXXFLAGS="-O2 -fPIC" \
-	CFLAGS="-O2 -U_FORTIFY_SOURCE -fPIC" "$sourceDir/configure" \
+	CFLAGS="-O2 -U_FORTIFY_SOURCE -fPIC" \
+		runConfigure \
+		./configue \
 		--build=$effectiveTargetMachineTriple \
 		--prefix=$installDir --libexecdir=$installDir/lib --mandir=$manDir \
 		--docdir=$docDir --disable-nls --with-gnu-ld \
