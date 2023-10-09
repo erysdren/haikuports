@@ -105,6 +105,8 @@ BUILD()
 
 INSTALL()
 {
+	cd $objectsDir
+
 	export DJDIR="$installDir/${targetArch}"
 
 	mkdir -p $includeDir
