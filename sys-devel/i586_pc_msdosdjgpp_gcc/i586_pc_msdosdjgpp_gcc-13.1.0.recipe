@@ -20,15 +20,21 @@ targetArch="i586-pc-msdosdjgpp"
 targetU="i586_pc_msdosdjgpp"
 
 PROVIDES="
-	${targetU}_gcc$secondaryArchSuffix = $portVersion compat >= 4
-	cmd:${targetU}_c++ = $portVersion compat >= 4
-	cmd:${targetU}_cc = $portVersion compat >= 4
-	cmd:${targetU}_cpp = $portVersion compat >= 4
-	cmd:${targetU}_g++ = $portVersion compat >= 4
-	cmd:${targetU}_gcc = $portVersion compat >= 4
-	cmd:${targetU}_gcc_$portVersion = $portVersion compat >= 4
-	cmd:${targetU}_gcov = $portVersion compat >= 4
-	lib:${targetU}_libstdc++$secondaryArchSuffix = $portVersion compat >= 4
+	${targetU}_gcc$secondaryArchSuffix = $portVersion
+	cmd:${targetU}_c++ = $portVersion
+	cmd:${targetU}_cc = $portVersion
+	cmd:${targetU}_cpp = $portVersion
+	cmd:${targetU}_g++ = $portVersion
+	cmd:${targetU}_gcc = $portVersion
+	cmd:${targetU}_gcc_$portVersion = $portVersion
+	cmd:${targetU}_gcov = $portVersion
+	cmd:${targetU}_lto_dump = $portVersion
+	cmd:${targetU}_gcov_dump = $portVersion
+	cmd:${targetU}_gcov_tool = $portVersion
+	cmd:${targetU}_gcc_ranlib = $portVersion
+	cmd:${targetU}_gcc_nm = $portVersion
+	cmd:${targetU}_gcc_ar = $portVersion
+	lib:${targetU}_libstdc++$secondaryArchSuffix = $portVersion
 	"
 
 REQUIRES="
