@@ -96,7 +96,7 @@ BUILD()
 		--target=$targetArch --program-prefix=${targetArch}-
 
 	echo "configure done, start build"
-	make $jobArgs all-gcc all-target-libgcc
+	make $jobArgs
 }
 
 INSTALL()
@@ -105,7 +105,7 @@ INSTALL()
 
 	export DJDIR="$installDir/${targetArch}"
 
-	DJDIR="$installDir/${targetArch}" make install-gcc install-target-libgcc
+	DJDIR="$installDir/${targetArch}" make install
 
 	### djcrx #################################################
 
