@@ -1,0 +1,49 @@
+SUMMARY="A port of Rise of the Triad to modern systems"
+DESCRIPTION="This is a port of Apogee's 3D action title Rise of the Triad, \
+originally released in 1994.  This port duplicates the functionality of the \
+original game on modern operating systems, including Linux, Win32, Mac OS X, and Haiku.
+
+This software is not supported by 3D Realms, Apogee, or the porters."
+HOMEPAGE="https://icculus.org/rott/"
+COPYRIGHT="1994-1995 Apogee Software, Ltd."
+LICENSE="GNU GPL v2"
+REVISION="1"
+SOURCE_URI="svn://svn.icculus.org/rott/trunk/"
+
+ARCHITECTURES="all !x86_gcc2"
+SECONDARY_ARCHITECTURES="x86"
+
+PROVIDES="
+	rott$secondaryArchSuffix = $portVersion
+	"
+REQUIRES="
+	haiku$secondaryArchSuffix
+	lib:libSDL_1.2$secondaryArchSuffix
+	lib:libSDL_mixer_1.2$secondaryArchSuffix
+	"
+
+BUILD_REQUIRES="
+	haiku${secondaryArchSuffix}_devel
+	devel:libSDL_1.2$secondaryArchSuffix
+	devel:libSDL_mixer_1.2$secondaryArchSuffix
+	"
+BUILD_PREREQUIRES="
+	cmd:gcc
+	cmd:ld
+	cmd:autoreconf
+	cmd:automake
+	cmd:pkg_config
+	cmd:make
+	"
+
+BUILD()
+{
+	autoreconf -fiv
+	runConfigure --omit-dirs binDir ./configure --bindir=$appsDir
+	make $jobArgs
+}
+
+INSTALL()
+{
+	make install
+}
