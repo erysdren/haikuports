@@ -10,7 +10,7 @@ LICENSE="GNU GPL v2"
 REVISION="1"
 SOURCE_URI="https://icculus.org/rott/releases/rott-$portVersion.tar.gz"
 CHECKSUM_SHA256="102516e8c312f6b0bbf6c623e1f01cbfbbc314ace8adfe1f201d47b15bd927ff"
-SOURCE_DIR="rott-$portVersion"
+SOURCE_DIR="rott-$portVersion/rott"
 
 ARCHITECTURES="all !x86_gcc2"
 SECONDARY_ARCHITECTURES="x86"
@@ -43,5 +43,5 @@ BUILD()
 INSTALL()
 {
 	mkdir -p $appsDir
-	cp -a $sourceDir/rott/rott $appsDir/rott
+	cp -a $sourceDir/rott $appsDir/rott
 }
