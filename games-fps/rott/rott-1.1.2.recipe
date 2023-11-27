@@ -11,6 +11,7 @@ REVISION="1"
 SOURCE_URI="https://icculus.org/rott/releases/rott-$portVersion.tar.gz"
 CHECKSUM_SHA256="102516e8c312f6b0bbf6c623e1f01cbfbbc314ace8adfe1f201d47b15bd927ff"
 SOURCE_DIR="rott-$portVersion/rott"
+PATCHES="rott-$portVersion.patchset"
 
 ARCHITECTURES="all !x86_gcc2"
 SECONDARY_ARCHITECTURES="x86"

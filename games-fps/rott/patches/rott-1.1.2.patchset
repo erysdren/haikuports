@@ -1,0 +1,25 @@
+From 5baf4b01f02e1fbaea8cdd7abef72a4a81464310 Mon Sep 17 00:00:00 2001
+From: Jaycie Ewald <jaycie.ewald@outlook.com>
+Date: Sun, 26 Nov 2023 23:06:54 -0600
+Subject: [PATCH] Fix compilation for Haiku.
+
+---
+ rott/dosutil.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rott/dosutil.c b/rott/dosutil.c
+index 0811641..68571cf 100644
+--- a/rott/dosutil.c
++++ b/rott/dosutil.c
+@@ -197,7 +197,7 @@ void DisplayTextSplash(byte *text, int l)
+ 	printf ("\033[m");
+ }
+ 
+-#if !defined(__CYGWIN__) && !defined(__MINGW32__)
++#if !defined(__CYGWIN__) && !defined(__MINGW32__) && !defined(__HAIKU__)
+ #include <execinfo.h>
+ 
+ void print_stack (int level)
+-- 
+2.43.0
+
