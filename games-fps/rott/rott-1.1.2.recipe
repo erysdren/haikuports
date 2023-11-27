@@ -32,20 +32,16 @@ BUILD_REQUIRES="
 BUILD_PREREQUIRES="
 	cmd:gcc
 	cmd:ld
-	cmd:autoreconf
-	cmd:automake
-	cmd:pkg_config
 	cmd:make
 	"
 
 BUILD()
 {
-	autoreconf -fiv
-	runConfigure --omit-dirs binDir ./configure --bindir=$appsDir
-	make $jobArgs
+	make SHAREWARE=0 $jobArgs
 }
 
 INSTALL()
 {
-	make install
+	mkdir -p $appsDir
+	cp -a $sourceDir/rott/rott $appsDir/rott
 }
