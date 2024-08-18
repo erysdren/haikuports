@@ -9,7 +9,7 @@ COPYRIGHT="Id Software Inc. 1993-1996
 	Fabian Greffrath 2014-2024"
 LICENSE="GNU GPL v2"
 REVISION="1"
-SOURCE_URI="https://github.com/fabiangreffrath/crispy-doom/archive/refs/tags/crispy-doom-$portVersion.tar.gz
+SOURCE_URI="https://github.com/fabiangreffrath/crispy-doom/archive/refs/tags/crispy-doom-$portVersion.tar.gz"
 CHECKSUM_SHA256="25eea88fdbe1320ad0d1a3e0ed66ae8d985c39b79e442beab5fc36d9d5ddfc42"
 SOURCE_DIR="crispy-doom-crispy-doom-$portVersion"
 
