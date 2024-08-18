@@ -1,0 +1,87 @@
+SUMMARY="Limit-removing Doom source port based on Chocolate Doom"
+DESCRIPTION="Crispy Doom is a friendly fork of Chocolate Doom that provides a \
+higher display resolution, widescreen rendering, removes the static limits of \
+the Doom engine and offers further optional visual, tactical and physical \
+enhancements while remaining entirely config file, savegame, netplay and demo \
+compatible with the original."
+HOMEPAGE="https://fabiangreffrath.github.io/crispy-homepage/"
+COPYRIGHT="Id Software Inc. 1993-1996
+	Fabian Greffrath 2014-2024"
+LICENSE="GNU GPL v2"
+REVISION="1"
+SOURCE_URI="https://github.com/fabiangreffrath/crispy-doom/archive/refs/tags/crispy-doom-$portVersion.tar.gz
+CHECKSUM_SHA256="25eea88fdbe1320ad0d1a3e0ed66ae8d985c39b79e442beab5fc36d9d5ddfc42"
+SOURCE_DIR="crispy-doom-crispy-doom-$portVersion"
+
+ARCHITECTURES="all !x86_gcc2"
+
+commandSuffix=$secondaryArchSuffix
+commandBinDir=$binDir
+if [ $targetArchitecture == x86_gcc2 ]; then
+	SECONDARY_ARCHITECTURES="x86"
+	commandSuffix=
+	commandBinDir=$prefix/bin
+fi
+
+PROVIDES="
+	crispy_doom$secondaryArchSuffix = $portVersion
+	cmd:crispy-doom = $portVersion
+	cmd:crispy-heretic = $portVersion
+	cmd:crispy-hexen = $portVersion
+	cmd:crispy-server = $portVersion
+	cmd:crispy-setup = $portVersion
+	cmd:crispy-strife = $portVersion
+	"
+REQUIRES="
+	haiku$secondaryArchSuffix
+	lib:libpng16$secondaryArchSuffix
+	lib:libsamplerate$secondaryArchSuffix
+	lib:libsdl2_2.0$secondaryArchSuffix
+	lib:libsdl2_mixer_2.0$secondaryArchSuffix
+	lib:libsdl2_net_2.0$secondaryArchSuffix
+	"
+
+BUILD_REQUIRES="
+	haiku${secondaryArchSuffix}_devel
+	devel:libpng16$secondaryArchSuffix
+	devel:libsamplerate$secondaryArchSuffix
+	devel:libsdl2_2.0$secondaryArchSuffix
+	devel:libsdl2_mixer_2.0$secondaryArchSuffix
+	devel:libsdl2_net_2.0$secondaryArchSuffix
+	"
+BUILD_PREREQUIRES="
+	cmd:cmake
+	cmd:gcc$secondaryArchSuffix
+	cmd:make
+	"
+
+defineDebugInfoPackage crispy_doom$secondaryArchSuffix \
+	$commandBinDir/crispy-doom \
+	$commandBinDir/crispy-hexen \
+	$commandBinDir/crispy-heretic \
+	$commandBinDir/crispy-server \
+	$commandBinDir/crispy-setup \
+	$commandBinDir/crispy-strife
+
+BUILD()
+{
+	cmake -Bbuild -S. \
+		-DCMAKE_BUILD_TYPE=Release
+
+	make -Cbuild $jobArgs
+}
+
+INSTALL()
+{
+	mkdir -p $prefix/bin
+
+	cp -a build/src/crispy-doom $prefix/bin/
+	cp -a build/src/crispy-hexen $prefix/bin/
+	cp -a build/src/crispy-heretic $prefix/bin/
+	cp -a build/src/crispy-server $prefix/bin/
+	cp -a build/src/crispy-setup $prefix/bin/
+	cp -a build/src/crispy-strife $prefix/bin/
+
+	mkdir -p $docDir
+	cp -a docs/*.md $docDir
+}
