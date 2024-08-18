@@ -18,12 +18,12 @@ SECONDARY_ARCHITECTURES="x86"
 
 PROVIDES="
 	crispy_doom$secondaryArchSuffix = $portVersion
-	cmd:crispy-doom = $portVersion
-	cmd:crispy-heretic = $portVersion
-	cmd:crispy-hexen = $portVersion
-	cmd:crispy-server = $portVersion
-	cmd:crispy-setup = $portVersion
-	cmd:crispy-strife = $portVersion
+	cmd:crispy_doom = $portVersion
+	cmd:crispy_heretic = $portVersion
+	cmd:crispy_hexen = $portVersion
+	cmd:crispy_server = $portVersion
+	cmd:crispy_setup = $portVersion
+	cmd:crispy_strife = $portVersion
 	"
 REQUIRES="
 	haiku$secondaryArchSuffix
@@ -60,12 +60,12 @@ INSTALL()
 {
 	mkdir -p $prefix/bin
 
-	cp -a build/src/crispy-doom $prefix/bin/
-	cp -a build/src/crispy-hexen $prefix/bin/
-	cp -a build/src/crispy-heretic $prefix/bin/
-	cp -a build/src/crispy-server $prefix/bin/
-	cp -a build/src/crispy-setup $prefix/bin/
-	cp -a build/src/crispy-strife $prefix/bin/
+	cp -a build/src/crispy-doom $prefix/bin/crispy_doom
+	cp -a build/src/crispy-hexen $prefix/bin/crispy_hexen
+	cp -a build/src/crispy-heretic $prefix/bin/crispy_heretic
+	cp -a build/src/crispy-server $prefix/bin/crispy_server
+	cp -a build/src/crispy-setup $prefix/bin/crispy_setup
+	cp -a build/src/crispy-strife $prefix/bin/crispy_strife
 
 	mkdir -p $docDir
 	cp -a docs/*.md $docDir
