@@ -15,14 +15,6 @@ SOURCE_DIR="crispy-doom-crispy-doom-$portVersion"
 
 ARCHITECTURES="all !x86_gcc2"
 
-commandSuffix=$secondaryArchSuffix
-commandBinDir=$binDir
-if [ $targetArchitecture == x86_gcc2 ]; then
-	SECONDARY_ARCHITECTURES="x86"
-	commandSuffix=
-	commandBinDir=$prefix/bin
-fi
-
 PROVIDES="
 	crispy_doom$secondaryArchSuffix = $portVersion
 	cmd:crispy-doom = $portVersion
@@ -54,14 +46,6 @@ BUILD_PREREQUIRES="
 	cmd:gcc$secondaryArchSuffix
 	cmd:make
 	"
-
-defineDebugInfoPackage crispy_doom$secondaryArchSuffix \
-	$commandBinDir/crispy-doom \
-	$commandBinDir/crispy-hexen \
-	$commandBinDir/crispy-heretic \
-	$commandBinDir/crispy-server \
-	$commandBinDir/crispy-setup \
-	$commandBinDir/crispy-strife
 
 BUILD()
 {
