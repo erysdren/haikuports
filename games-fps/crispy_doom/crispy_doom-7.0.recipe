@@ -33,7 +33,6 @@ REQUIRES="
 	lib:libsdl2_mixer_2.0$secondaryArchSuffix
 	lib:libsdl2_net_2.0$secondaryArchSuffix
 	lib:libz$secondaryArchSuffix
-	lib:libfluidsynth$secondaryArchSuffix
 	"
 
 BUILD_REQUIRES="
@@ -44,7 +43,6 @@ BUILD_REQUIRES="
 	devel:libsdl2_mixer_2.0$secondaryArchSuffix
 	devel:libsdl2_net_2.0$secondaryArchSuffix
 	devel:libz$secondaryArchSuffix
-	devel:libfluidsynth$secondaryArchSuffix
 	"
 BUILD_PREREQUIRES="
 	cmd:cmake
