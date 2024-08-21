@@ -75,8 +75,6 @@ BUILD()
 
 INSTALL()
 {
-	make install
-
 	prepareInstalledDevelLibs libSDL2_mixer libSDL2_mixer-2.0
 	fixPkgconfig
 
