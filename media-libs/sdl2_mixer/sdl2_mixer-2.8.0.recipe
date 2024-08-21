@@ -68,6 +68,8 @@ BUILD()
 {
 	cmake cmake -Bbuild -S. \
 		-DCMAKE_INSTALL_PREFIX=$prefix \
+		-DLIB_INSTALL_DIR=$libDir \
+		-DINCLUDE_INSTALL_DIR=$includeDir \
 		-DSDL2MIXER_SAMPLES=OFF \
 		-DCMAKE_BUILD_TYPE=Release
 
