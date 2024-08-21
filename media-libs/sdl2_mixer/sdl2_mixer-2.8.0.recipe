@@ -65,7 +65,8 @@ BUILD_PREREQUIRES="
 BUILD()
 {
 	cmake cmake -Bbuild -S. \
-		-DSDL2MIXER_SAMPLES=OFF
+		-DSDL2MIXER_SAMPLES=OFF \
+		-DCMAKE_BUILD_TYPE=Release
 
 	make -Cbuild $jobArgs
 }
