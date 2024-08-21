@@ -31,6 +31,7 @@ REQUIRES="
 	lib:libvorbis$secondaryArchSuffix
 	lib:libopusfile$secondaryArchSuffix
 	lib:libxmp$secondaryArchSuffix
+	lib:libwavpack$secondaryArchSuffix
 	"
 
 PROVIDES_devel="
@@ -54,6 +55,7 @@ BUILD_REQUIRES="
 	devel:libvorbis$secondaryArchSuffix
 	devel:libopusfile$secondaryArchSuffix
 	devel:libxmp$secondaryArchSuffix
+	devel:libwavpack$secondaryArchSuffix
 	"
 BUILD_PREREQUIRES="
 	cmd:cmake
